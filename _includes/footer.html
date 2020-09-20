@@ -1,11 +1,25 @@
 <footer>
-  <p>© {{ site.time | date: '%Y' }} elementary, Inc</p>
+
+  {% if site.organization %}
+    {% assign credits = site.organization %}
+  {% else %}
+    {% assign credits = site.title %}
+  {% endif %}
+
+  <p>© {{ site.time | date: '%Y' }} {{ credits }}</p>
   <ul>
-    <li><a href="https://elementary.io/press" target="_self">Press</a></li>
-    <li><a href="https://elementary.io/brand" target="_self">Brand</a></li>
-    <li><a href="https://elementary.io/oem" target="_self">OEMs</a></li>
-    <li><a href="https://elementary.io/privacy" target="_self">Privacy</a></li>
-    <li><a href="https://elementary.io/team" target="_self">Team</a></li>
-    <li><a href="https://elementary.io/open-source" target="_self">Open Source</a></li>
+
+    {% for item in site.footer %}
+
+      {% if item.url contains '://' %}
+        {% assign url = item.url %}
+      {% else %}
+        {% assign url = item.url | relative_url %}
+      {% endif %}
+
+      <li><a href="{{ url }}">{{ item.title }}</a></li>
+  
+    {% endfor %}
+
   </ul>
 </footer>
