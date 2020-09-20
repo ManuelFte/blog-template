@@ -1,53 +1,60 @@
 <header>
   <nav class="primary">
     <ul>
-      <li><a href="https://elementary.io" class="logomark" target="_self">
-        {% include svg/logomark.svg %}
-      </a></li>
+      {% if site.logo.image %}
 
-      <li><a href="https://elementary.io/support" target="_self">Support</a></li>
-      <li><a href="https://developer.elementary.io" target="_self">Developer</a><</li>
-      <li><a href="https://elementary.io/get-involved" target="_self">Get Involved</a></li>
-      <li><a href="https://elementary.io/store/" target="_self">Store</a></li>
-      <li><a href="{{ site.baseurl }}/">Blog</a></li>
+        {% if site.logo.url contains '://' %}
+          {% assign logo_url = site.logo.url %}
+        {% else %}
+          {% assign logo_url = site.logo.url | relative_url %}
+        {% endif %}
+
+        <li><a href="{{ logo_url }}" class="logomark">
+
+          {% if site.logo.image contains '://' %}
+            {% assign logo_image = site.logo.image %}
+          {% else %}
+            {% assign logo_image = site.logo.image | relative_url %}
+          {% endif %}
+
+          {% if site.logo.svg %}
+            {% include {{ site.logo.image }} %}
+          {% else %}
+            <img src="{{ logo_image }}" alt="{{ site.title }}'s logo'" height="22" width="22" />
+          {% endif %}
+
+        </a></li>
+
+      {% endif %}
+
+      {% for item in site.primary_navigation %}
+
+        {% if item.url contains '://' %}
+          {% assign url = item.url %}
+        {% else %}
+          {% assign url = item.url | relative_url %}
+        {% endif %}
+
+        <li><a href="{{ url }}">{{ item.title }}</a></li>
+      {% endfor %}
     </ul>
 
-    <ul>
-      <li><a href="{{ site.baseurl }}/feed.xml" title="RSS Feed">
-        {% include svg/rss-square.svg %}
-      </a></li>
-
-      <li><a href="https://www.facebook.com/elementaryos" target="_blank" rel="noopener" title="Facebook">
-        {% include svg/facebook.svg %}
-      </a></li>
-
-      <li><a href="https://mastodon.social/@elementary" target="_blank" rel="noopener" title="Mastodon">
-        {% include svg/mastodon.svg %}
-      </a></li>
-
-      <li><a href="https://www.reddit.com/r/elementaryos" target="_blank" rel="noopener" title="Reddit">
-        {% include svg/reddit.svg %}
-      </a></li>
-
-      <li><a href="https://elementaryos.stackexchange.com" target="_blank" rel="noopener" title="StackExchange">
-        {% include svg/stack-exchange.svg %}
-      </a></li>
-
-      <li><a href="https://twitter.com/elementary" target="_blank" rel="noopener" title="Twitter">
-        {% include svg/twitter.svg %}
-      </a></li>
-
-      <li><a href="https://join.slack.com/t/elementarycommunity/shared_invite/enQtMzU1NDU4OTE1MjY2LWUyOTBkZGNkZGM4MDgzZjE2ZjRiZDgwMDQ1ZTA0MzcxYjI0MDUyNGRlNDI5ZWViNDkwMzMwYzczMDY2ZjA0MTc" target="_blank" rel="noopener" title="Slack">
-        {% include svg/slack.svg %}
-      </a></li>
-    </ul>
+    {% include nav_icons.html %}
   </nav>
   <nav class="secondary">
     <div>
-      <a href="{{ site.baseurl }}/tags/#updates">OS Updates</a>
-      <a href="{{ site.baseurl }}/tags/#appcenter">AppCenter</a>
-      <a href="{{ site.baseurl }}/tags/#devs">Developers</a>
-      <a href="{{ site.baseurl }}/tags/#design">Design</a>
+
+      {% for item in site.secondary_navigation %}
+
+        {% if item.url contains '://' %}
+          {% assign url = item.url %}
+        {% else %}
+          {% assign url = item.url | relative_url %}
+        {% endif %}
+
+        <a href="{{ url }}">{{ item.title }}</a>
+      {% endfor %}
+
     </div>
 
     <div id="search-container" class="hidden">
