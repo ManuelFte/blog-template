@@ -1,24 +1,9 @@
 <footer>
-
-  {% if site.organization %}
-    {% assign credits = site.organization %}
-  {% else %}
-    {% assign credits = site.title %}
-  {% endif %}
-
-  <p>© {{ site.time | date: '%Y' }} {{ credits }}</p>
+  <p>© {{ site.time | date: '%Y' }} {% if site.organization %}{{ site.organization }}{% else %}{{ site.title }}{% endif %}</p>
   <ul>
 
     {% for item in site.footer %}
-
-      {% if item.url contains '://' %}
-        {% assign url = item.url %}
-      {% else %}
-        {% assign url = item.url | relative_url %}
-      {% endif %}
-
-      <li><a href="{{ url }}">{{ item.title }}</a></li>
-  
+      <li><a href="{% if item.url '://' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a></li>
     {% endfor %}
 
   </ul>

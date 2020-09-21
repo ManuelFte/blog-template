@@ -3,24 +3,12 @@
     <ul>
       {% if site.logo.image %}
 
-        {% if site.logo.url contains '://' %}
-          {% assign logo_url = site.logo.url %}
-        {% else %}
-          {% assign logo_url = site.logo.url | relative_url %}
-        {% endif %}
-
-        <li><a href="{{ logo_url }}" class="logomark">
-
-          {% if site.logo.image contains '://' %}
-            {% assign logo_image = site.logo.image %}
-          {% else %}
-            {% assign logo_image = site.logo.image | relative_url %}
-          {% endif %}
+        <li><a href="{% if site.logo contains '://' %}{{ site.logo }}{% else %}{{ site.logo | relative_url }}{% endif %}" class="logomark">
 
           {% if site.logo.svg %}
             {% include {{ site.logo.image }} %}
           {% else %}
-            <img src="{{ logo_image }}" alt="{{ site.title }}'s logo'" height="22" width="22" />
+            <img src="{% if site.logo.image contains '://' %}{{ site.logo.image }}{% else %}{{ site.logo.image | relative_url }}{% endif %}" alt="{{ site.title }}'s logo'" height="22" width="22" />
           {% endif %}
 
         </a></li>
@@ -28,14 +16,7 @@
       {% endif %}
 
       {% for item in site.primary_navigation %}
-
-        {% if item.url contains '://' %}
-          {% assign url = item.url %}
-        {% else %}
-          {% assign url = item.url | relative_url %}
-        {% endif %}
-
-        <li><a href="{{ url }}">{{ item.title }}</a></li>
+        <li><a href="{% if item.url contains '://' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a></li>
       {% endfor %}
     </ul>
 
@@ -45,14 +26,7 @@
     <div>
 
       {% for item in site.secondary_navigation %}
-
-        {% if item.url contains '://' %}
-          {% assign url = item.url %}
-        {% else %}
-          {% assign url = item.url | relative_url %}
-        {% endif %}
-
-        <a href="{{ url }}">{{ item.title }}</a>
+        <a href="{% if item.url contains '://' %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
       {% endfor %}
 
     </div>
