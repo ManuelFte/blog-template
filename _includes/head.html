@@ -1,56 +1,75 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{% if page.title %}{{ page.title }} &sdot; {% endif %}{{ site.title }}</title>
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta itemprop="name" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+  {% if page.title %}
+    {% assign title = page.title %}
+    {% capture title_tag %}{{ page.title}} &sdot; {{ site.title }}{% endcapture %}
+  {% else %}
+    {% assign title = site.title %}
+    {% assign title_tag = site.title %}
+  {% endif %}
+
+  <title>{{ title_tag }}</title>
+  <meta property="og:title" content="{{ title }}" />
+  <meta itemprop="name" content="{{ title }}" />
+  <meta name="twitter:title" content="{{ title }}" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" sizes="256x256" href="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
-  <meta itemprop="logo" content="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
-  <link rel="shortcut icon" href="https://elementary.io/favicon.ico">
-  <link rel="apple-touch-icon" href="https://elementary.io/images/launcher-icons/apple-touch-icon.png">
+  {% if site.gravatar %}
+    <link rel="icon" sizes="256x256" href="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
+    <meta itemprop="logo" content="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
+  {% endif %}
 
-  <link rel="alternate" type="application/rss+xml" title="elementary Blog" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+  {% if site.favicon %}
+    <link rel="shortcut icon" href="{% if site.favicon contains '://' %}{{ site.favicon }}{% else %}{{ site.favicon | relative_url }}{% endif %}">
+  {% endif %}
+
+  {% if site.apple_touch_icon %}
+    <link rel="apple-touch-icon" href="{% if site.apple_touch_icon contains '://' %}{{ site.apple_touch_icon }}{% else %}{{ site.apple_touch_icon | relative_url }}{% endif %}">
+  {% endif %}
+
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | relative_url }}" />
 
   <meta name="author" content="{% if page.author.name %}{{ page.author.name }}{% else %}{{ site.author }}{% endif %}" />
 
   {% if page.theme-color %}
-    {% assign theme-color = page.theme-color %}
+    {% assign theme_color = page.theme-color %}
   {% else %}
-    {% assign theme-color = site.theme-color %}
+    {% assign theme_color = site.theme-color %}
   {% endif %}
 
-  <meta name="theme-color" content="{{ theme-color }}" />
+  <meta name="theme-color" content="{{ theme_color }}" />
 
   {% if page.image %}
-    {% assign prefix = page.image | slice: 0, 4 %}
-    {% if prefix == "http" %}
-      {% assign image = page.image %}
-    {% else %}
-      {% assign image = page.image | prepend: site.baseurl | prepend: site.url %}
-    {% endif %}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image" content="{{ image }}" />
-  {% else %}
+    <meta property="twitter:image" content="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" />
+  {% elsif site.gravatar %}
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:image" content="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
   {% endif %}
+
+  {% if site.twitter %}
   <meta name="twitter:site" content="@{{ site.twitter }}" />
   <meta name="twitter:creator" content="@{{ site.twitter }}" />
+  {% endif %}
 
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
-  <meta itemprop="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
-  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+  {% if page.description %}
+    {% assign description = page.description %}
+  {% else %}
+    {% assign description = site.description %}
+  {% endif %}
+
+  <meta name="description" content="{{ description }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta itemprop="description" content="{{ description }}" />
+  <meta name="twitter:description" content="{{ description }}" />
 
   <link rel="stylesheet" type="text/css" media="all" href="{{ '/css/main.css' | prepend: site.baseurl | append: '?v=' | append: site.time }}" />
   <style>
     body > header {
-      background-color: {{ theme-color }};
+      background-color: {{ theme_color }};
     }
   </style>
   {% if jekyll.environment == "production" and site.url == "https://blog.elementary.io" %}
