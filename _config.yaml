@@ -1,14 +1,31 @@
+# Site Settings
 title: "elementary Blog"
+email: contact@elementary.io
 description: "We design and develop the fast, open, and privacy-respecting replacement for Windows and macOS"
 organization: elementary, Inc
+url: "https://blog.elementary.io"
+baseurl: ""
+permalink: /:title/
+
+# Logos and icons
 logo:
   image: svg/logomark.svg
   url: https://elementary.io
   svg: true # If true, it'll look for the specified SVG file in _includes
-permalink: /:title/
-theme-color: "#64baff"
 gravatar: eaa3cc978770998ea2bd4382935bf0f4
+favicon: /favicon.ico
+apple_touch_icon: https://elementary.io/images/launcher-icons/apple-touch-icon.png
 
+# Theme and plugins
+# theme: jekyll-theme-elementary-blog
+theme-color: "#64baff"
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-sitemap
+
+# Social media
 social:
   rss: true
   facebook: elementaryos
@@ -22,6 +39,7 @@ social:
   # patreon: elementary
   # paypal: elementary
 
+# Navigation bars
 primary_navigation:
 - title: Support
   url: https://elementary.io/support
@@ -44,6 +62,7 @@ secondary_navigation:
 - title: Design
   url: /tags/#design
 
+# Footer
 footer:
   - title: Press
     url: https://elementary.io/press
@@ -58,6 +77,7 @@ footer:
   - title: Open Source
     url: https://elementary.io/open-source
 
+# Authors
 authors:
   aroman:
     name: "Avi Romanoff"
@@ -85,12 +105,7 @@ authors:
   anonymous:
     name: "Unknown Author"
 
-plugins:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-redirect-from
-  - jekyll-sitemap
-
+# Specific Configurations
 paginate: 7
 paginate_path: "/archive/:num/"
 
