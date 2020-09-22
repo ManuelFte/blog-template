@@ -1,9 +1,9 @@
 <header>
   <nav class="primary">
     <ul>
-      {% if site.logo.image %}
+      {% if site.logo.image and site.logo.url %}
 
-        <li><a href="{% if site.logo contains '://' %}{{ site.logo }}{% else %}{{ site.logo | relative_url }}{% endif %}" class="logomark">
+        <li><a href="{% if site.logo.url contains '://' %}{{ site.logo.url }}{% else %}{{ site.logo.url | relative_url }}{% endif %}" class="logomark">
 
           {% if site.logo.svg %}
             {% include {{ site.logo.image }} %}
