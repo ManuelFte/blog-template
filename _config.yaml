@@ -117,4 +117,8 @@ kramdown:
       line_numbers: true
 
 future: false # Allows us to stage posts
+
+expire_time: 63072000 # Time in seconds after which to show an "outdated" notice on top of posts. Default is 2 years. Set to 0 to disable
+expire_notice: "<strong>Note:</strong> This post was written over two years ago. The information below may be outdated."
+
 exclude: [README.md, Gemfile, Gemfile.lock, vendor]
