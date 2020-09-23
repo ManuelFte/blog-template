@@ -1,66 +1,72 @@
 <ul>
-    {% if site.social.rss %}
+    {% if site.rss %}
       <li><a href="{{ site.baseurl }}/feed.xml" title="RSS Feed">
         {% include svg/rss-square.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.facebook %}
-      <li><a href="https://www.facebook.com/{{ site.social.facebook }}" target="_blank" rel="noopener" title="Facebook">
+    {% if site.facebook.username %}
+      <li><a href="https://www.facebook.com/{{ site.facebook.username }}" target="_blank" rel="noopener" title="Facebook">
         {% include svg/facebook.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.mastodon %}
-      <li><a href="https://mastodon.social/@{{ site.social.mastodon }}" target="_blank" rel="noopener" title="Mastodon">
+    {% if site.mastodon.username %}
+      <li><a href="https://mastodon.social/@{{ site.mastodon.username }}" target="_blank" rel="noopener" title="Mastodon">
         {% include svg/mastodon.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.reddit_sub %}
-      <li><a href="https://www.reddit.com/r/{{ site.social.reddit_sub }}" target="_blank" rel="noopener" title="Subreddit">
+    {% if site.reddit.subreddit %}
+      <li><a href="https://www.reddit.com/r/{{ site.reddit.subreddit }}" target="_blank" rel="noopener" title="Subreddit">
         {% include svg/reddit.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.reddit_user %}
-      <li><a href="https://www.reddit.com/u/{{ site.social.reddit_user }}" target="_blank" rel="noopener" title="Reddit">
+    {% if site.reddit.username %}
+      <li><a href="https://www.reddit.com/u/{{ site.reddit.username }}" target="_blank" rel="noopener" title="Reddit">
         {% include svg/reddit.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.stackexchange %}
-      <li><a href="https://{{ site.social.stackexchange }}.stackexchange.com" target="_blank" rel="noopener" title="StackExchange">
+    {% if site.stackexchange.username %}
+      <li><a href="https://{{ site.stackexchange.username }}.stackexchange.com" target="_blank" rel="noopener" title="StackExchange">
         {% include svg/stack-exchange.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.twitter %}
-      <li><a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener" title="Twitter">
+    {% if site.twitter.username %}
+      <li><a href="https://twitter.com/{{ site.twitter.username }}" target="_blank" rel="noopener" title="Twitter">
         {% include svg/twitter.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.slack %}
-      <li><a href="https://join.slack.com/t/{{ site.social.slack }}" target="_blank" rel="noopener" title="Slack">
+    {% if site.slack.workspace %}
+      <li><a href="https://{{ site.slack.workspace }}.slack.com" target="_blank" rel="noopener" title="Slack Workspace">
         {% include svg/slack.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.github %}
-      <li><a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" title="GitHub">
+    {% if site.slack.invite %}
+      <li><a href="https://join.slack.com/t/{{ site.slack.invite }}" target="_blank" rel="noopener" title="Slack Invite">
+        {% include svg/slack.svg %}
+      </a></li>
+    {% endif %}
+
+    {% if site.github.username %}
+      <li><a href="https://github.com/{{ site.github.username }}" target="_blank" rel="noopener" title="GitHub">
         {% include svg/github.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.patreon %}
-      <li><a href="https://www.patreon.com/{{ site.social.patreon }}" target="_blank" rel="noopener" title="Patreon">
+    {% if site.patreon.username %}
+      <li><a href="https://www.patreon.com/{{ site.patreon.username }}" target="_blank" rel="noopener" title="Patreon">
         {% include svg/patreon.svg %}
       </a></li>
     {% endif %}
 
-    {% if site.social.paypal %}
-      <li><a href="https://www.paypal.me/{{ site.social.paypal }}" target="_blank" rel="noopener" title="PayPal">
+    {% if site.paypal.username %}
+      <li><a href="https://www.paypal.me/{{ site.paypal.username }}" target="_blank" rel="noopener" title="PayPal">
         {% include svg/paypal.svg %}
       </a></li>
     {% endif %}

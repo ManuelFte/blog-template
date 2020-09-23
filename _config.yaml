@@ -26,18 +26,26 @@ plugins:
   - jekyll-sitemap
 
 # Social media
-social:
-  rss: true
-  facebook: elementaryos
-  mastodon: elementary
-  reddit_sub: elementaryos
-  reddit_user: null
-  stackexchange: elementaryos
-  twitter: elementary
-  slack: elementarycommunity/shared_invite/enQtMzU1NDU4OTE1MjY2LWUyOTBkZGNkZGM4MDgzZjE2ZjRiZDgwMDQ1ZTA0MzcxYjI0MDUyNGRlNDI5ZWViNDkwMzMwYzczMDY2ZjA0MTc
-  # github: elementary
-  # patreon: elementary
-  # paypal: elementary
+facebook:
+  username: elementaryos
+mastodon:
+  username: elementary
+reddit:
+#  username: 
+  subreddit: elementaryos
+stackexchange:
+  username: elementaryos
+twitter:
+  username: elementary
+slack:
+#  workspace: elementarycommunity
+  invite: elementarycommunity/shared_invite/enQtMzU1NDU4OTE1MjY2LWUyOTBkZGNkZGM4MDgzZjE2ZjRiZDgwMDQ1ZTA0MzcxYjI0MDUyNGRlNDI5ZWViNDkwMzMwYzczMDY2ZjA0MTc
+# github:
+#  username: elementary
+# patreon:
+#  username: elementary
+# paypal:
+#  username: elementary
 
 # Navigation bars
 primary_navigation:
@@ -106,6 +114,8 @@ authors:
     name: "Unknown Author"
 
 # Specific Configurations
+rss: true
+
 paginate: 7
 paginate_path: "/archive/:num/"
 
