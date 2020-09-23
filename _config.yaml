@@ -6,24 +6,15 @@ organization: elementary, Inc
 url: "https://blog.elementary.io"
 baseurl: ""
 permalink: /:title/
+theme-color: "#64baff"
 
 # Logos and icons
 logo:
   image: svg/logomark.svg
   url: https://elementary.io
   svg: true # If true, it'll look for the specified SVG file in _includes
-gravatar: eaa3cc978770998ea2bd4382935bf0f4
 favicon: /favicon.ico
 apple_touch_icon: https://elementary.io/images/launcher-icons/apple-touch-icon.png
-
-# Theme and plugins
-# theme: jekyll-theme-elementary-blog
-theme-color: "#64baff"
-plugins:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-redirect-from
-  - jekyll-sitemap
 
 # Social media
 facebook:
@@ -40,7 +31,7 @@ twitter:
 slack:
 #  workspace: elementarycommunity
   invite: elementarycommunity/shared_invite/enQtMzU1NDU4OTE1MjY2LWUyOTBkZGNkZGM4MDgzZjE2ZjRiZDgwMDQ1ZTA0MzcxYjI0MDUyNGRlNDI5ZWViNDkwMzMwYzczMDY2ZjA0MTc
-# github:
+# github_:
 #  username: elementary
 # patreon:
 #  username: elementary
@@ -86,6 +77,13 @@ footer:
     url: https://elementary.io/open-source
 
 # Authors
+# Site's author. Used only on some meta tags
+author:
+  name: elementary
+  gravatar: eaa3cc978770998ea2bd4382935bf0f4
+
+# Posts' authors
+# Add an author for yourself even if you're the only author and the above variables are filled
 authors:
   aroman:
     name: "Avi Romanoff"

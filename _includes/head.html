@@ -15,9 +15,9 @@
   <meta itemprop="name" content="{{ title }}" />
   <meta name="twitter:title" content="{{ title }}" />
 
-  {% if site.gravatar %}
-    <link rel="icon" sizes="256x256" href="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
-    <meta itemprop="logo" content="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
+  {% if site.author.gravatar %}
+    <link rel="icon" sizes="256x256" href="https://www.gravatar.com/avatar/{{ site.author.gravatar }}?s=256&d=blank" />
+    <meta itemprop="logo" content="https://www.gravatar.com/avatar/{{ site.author.gravatar }}?s=256&d=blank" />
   {% endif %}
 
   {% if site.favicon %}
@@ -29,7 +29,18 @@
   {% endif %}
 
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | relative_url }}" />
-  <meta name="author" content="{% if page.author.name %}{{ page.author.name }}{% else %}{{ site.author }}{% endif %}" />
+
+  {% if page.author or site.author.name %}
+
+    {% if page.author %}
+      {% assign author = site.authors[page.author].name %}
+    {% else %}
+      {% assign author = site.author.name %}
+    {% endif %}
+  
+    <meta name="author" content="{{ author }}" />
+
+  {% endif %}
 
   {% if page.theme-color %}
     {% assign theme_color = page.theme-color %}
@@ -42,9 +53,9 @@
   {% if page.image %}
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:image" content="{% if page.image contains '://' %}{{ page.image }}{% else %}{{ page.image | relative_url }}{% endif %}" />
-  {% elsif site.gravatar %}
+  {% elsif site.author.gravatar %}
     <meta name="twitter:card" content="summary" />
-    <meta property="twitter:image" content="https://www.gravatar.com/avatar/{{ site.gravatar }}?s=256&d=blank" />
+    <meta property="twitter:image" content="https://www.gravatar.com/avatar/{{ site.author.gravatar }}?s=256&d=blank" />
   {% endif %}
 
   {% if site.twitter.username %}
