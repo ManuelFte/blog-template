@@ -62,7 +62,7 @@
 
       {% if option == "twitter" %}
         <a
-          href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ share_url }}&via={{ site.twitter.username }}&original_referer={{ share_url }}"
+          href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ share_url }}{% if site.twitter.username %}&via={{ site.twitter.username }}{% endif %}&original_referer={{ share_url }}"
           rel="noreferrer nofollow noopener"
           target="_blank"
           title="Twitter"
