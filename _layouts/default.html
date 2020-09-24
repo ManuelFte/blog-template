@@ -6,7 +6,11 @@
     <section>
       {{ content | replace: '<a href="http', '<a rel="nofollow noopener noreferrer" target="_blank" href="http' }}
 
-      {% include medium.html %}
+      {% if site.site_notice_bottom %}
+        <div class="site-notice-bottom"></a>
+          {% include site-notice-bottom.html %}
+        </div>
+      {% endif %}
     </section>
     {% include footer.html %}
     {% include scripts.html %}

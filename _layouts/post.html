@@ -31,11 +31,19 @@ layout: default
     {{ content }}
   </section>
 
-  {% include thanks.html %}
+  {% if page.post_notice_bottom or site.post_notice_bottom %}
+    <div class="post-notice-bottom">
+      {% include post-notice-bottom.html %}
+    </div>
+  {% endif %}
 </article>
 
-{% include license.html %}
-{% include social.html %}
+{% if site.license %}
+  {% include license.html %}
+{% endif %}
+{% if site.share_links.size > 0 %}
+  {% include social.html %}
+{% endif %}
 
 <h2 class="up-next">Up Next</h2>
 

@@ -111,8 +111,12 @@ authors:
   anonymous:
     name: "Unknown Author"
 
-# Specific Configurations
+# Social media share
+share_links: [twitter, facebook, reddit, permalink]
+
+# Miscellaneous Configurations
 rss: true
+license: true
 
 paginate: 7
 paginate_path: "/archive/:num/"
@@ -125,6 +129,9 @@ kramdown:
       line_numbers: true
 
 future: false # Allows us to stage posts
+
+site_notice_bottom: true
+post_notice_bottom: true
 
 expire_time: 63072000 # Time in seconds after which to show an "outdated" notice on top of posts. Default is 2 years. Set to 0 to disable
 expire_notice: "<strong>Note:</strong> This post was written over two years ago. The information below may be outdated."
