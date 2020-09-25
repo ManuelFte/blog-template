@@ -31,10 +31,12 @@ layout: default
     {{ content }}
   </section>
 
-  {% if page.post_notice_bottom or site.post_notice_bottom %}
-    <div class="post-notice-bottom">
-      {% include post-notice-bottom.html %}
-    </div>
+  {% if site.post_notice_bottom or page.post_notice_bottom %}
+    {% unless page.post_notice_bottom == false %}
+      <div class="post-notice-bottom">
+        {% include post-notice-bottom.html %}
+      </div>
+    {% endunless %}
   {% endif %}
 </article>
 
