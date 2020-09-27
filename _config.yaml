@@ -6,7 +6,7 @@ organization: elementary, Inc
 url: "https://blog.elementary.io"
 baseurl: ""
 permalink: /:title/
-theme-color: "#64baff"
+theme_color: "#64baff"
 
 # Logos and icons
 logo:

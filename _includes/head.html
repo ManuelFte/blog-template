@@ -42,13 +42,21 @@
 
   {% endif %}
 
-  {% if page.theme-color %}
-    {% assign theme_color = page.theme-color %}
-  {% else %}
-    {% assign theme_color = site.theme-color %}
-  {% endif %}
+  {% if site.url == "https://blog.elementary.io" %}
 
-  <meta name="theme-color" content="{{ theme_color }}" />
+    <meta name="theme-color" content="{% if page.theme-color %}{{ page.theme-color }}{% else %}#64baff{% endif %}" />
+
+  {% else %}
+
+    {% if page.theme_color %}
+      {% assign theme_color = page.theme_color %}
+    {% else %}
+      {% assign theme_color = site.theme_color %}
+    {% endif %}
+
+    <meta name="theme-color" content="{{ theme_color }}" />
+
+  {% endif %}
 
   {% if page.image %}
     <meta name="twitter:card" content="summary_large_image" />
@@ -75,11 +83,13 @@
   <meta name="twitter:description" content="{{ description }}" />
 
   <link rel="stylesheet" type="text/css" media="all" href="{{ '/css/main.css' | prepend: site.baseurl | append: '?v=' | append: site.time }}" />
-  <style>
-    body > header {
-      background-color: {{ theme_color }};
-    }
-  </style>
+  {% unless site.url == "https://blog.elementary.io" %}
+    <style>
+      body > header {
+        background-color: {{ theme_color }};
+      }
+    </style>
+  {% endunless %}
   {% if jekyll.environment == "production" and site.url == "https://blog.elementary.io" %}
     <script async defer data-domain="blog.elementary.io" src="https://stats.elementary.io/js/index.js"></script>
     <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
