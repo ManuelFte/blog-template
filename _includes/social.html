@@ -13,7 +13,7 @@
           title="Twitter"
           onclick="plausible('Social: Twitter')"
         >
-          <img src="{{ '/images/twitter.svg' | prepend: site.baseurl }}" alt="Twitter" />
+          <img src="{{ '/images/twitter.svg' | relative_url }}" alt="Twitter" />
         </a>
       {% endif %}
 
@@ -25,7 +25,7 @@
           title="Mastodon"
           onclick="plausible('Social: Mastodon')"
         >
-          <img src="{{ '/images/mastodon.svg' | prepend: site.baseurl }}" alt="Mastodon" />
+          <img src="{{ '/images/mastodon.svg' | relative_url }}" alt="Mastodon" />
         </a>
       {% endif %}
 
@@ -37,7 +37,7 @@
           title="Reddit"
           onclick="plausible('Social: Reddit')"
         >
-          <img src="{{ '/images/reddit.svg' | prepend: site.baseurl }}" alt="Reddit" />
+          <img src="{{ '/images/reddit.svg' | relative_url }}" alt="Reddit" />
         </a>
       {% endif %}
 
@@ -49,7 +49,7 @@
           title="Facebook"
           onclick="plausible('Social: Facebook')"
         >
-          <img src="{{ '/images/facebook.svg' | prepend: site.baseurl }}" alt="Facebook" />
+          <img src="{{ '/images/facebook.svg' | relative_url }}" alt="Facebook" />
         </a>
       {% endif %}
     </div>
@@ -57,7 +57,7 @@
 
   <div class="share">
     <h3>Share</h3>
-    {% assign share_url = page.url | prepend: site.baseurl | prepend: site.url %}
+    {% assign share_url = page.url | absolute_url %}
     {% for option in site.share_links %}
 
       {% if option == "twitter" %}
@@ -68,7 +68,7 @@
           title="Twitter"
           onclick="plausible('Share: Twitter')"
         >
-          <img src="{{ '/images/twitter.svg' | prepend: site.baseurl }}" alt="Twitter" />
+          <img src="{{ '/images/twitter.svg' | relative_url }}" alt="Twitter" />
         </a>
         {% continue %}
       {% endif %}
@@ -81,7 +81,7 @@
           title="Facebook"
           onclick="plausible('Share: Facebook')"
         >
-          <img src="{{ '/images/facebook.svg' | prepend: site.baseurl }}" alt="Facebook" />
+          <img src="{{ '/images/facebook.svg' | relative_url }}" alt="Facebook" />
         </a>
         {% continue %}
       {% endif %}
@@ -94,19 +94,19 @@
           title="Reddit"
           onclick="plausible('Share: Reddit')"
         >
-          <img src="{{ '/images/reddit.svg' | prepend: site.baseurl }}" alt="Reddit" />
+          <img src="{{ '/images/reddit.svg' | relative_url }}" alt="Reddit" />
         </a>
         {% continue %}
       {% endif %}
 
       {% if option == "permalink" %}
         <a
-          href="{{ page.url | prepend: site.baseurl | prepend: site.url }}"
+          href="{{ page.url | absolute_url }}"
 
           title="Permalink"
           onclick="plausible('Share: Permalink')"
         >
-          <img src="{{ '/images/edit-copy-32.svg' | prepend: site.baseurl }}" alt="Permalink" />
+          <img src="{{ '/images/edit-copy-32.svg' | relative_url }}" alt="Permalink" />
         </a>
         {% continue %}
       {% endif %}
